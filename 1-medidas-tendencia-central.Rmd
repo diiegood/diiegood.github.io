@@ -1,0 +1,119 @@
+---
+title: "Medidas de tendencia central"
+author:
+    name: "[Valdez Fonseca Jorge Diego](https://diiegood.github.io)"
+    affiliation: "Estadística 2022-2, [Facultad de economía](http://www.economia.unam.mx/)"
+date: "2/3/2022"
+output: html_document
+---
+
+### 1. ¿Qué son las medidas de tendencia central? 🤔 {style="text-align: justify;"}
+
+> "Son medidas estadísticas que se usan para describir como se puede resumir la localización de los datos. Ubican e identifican el punto alrededor del cual se centran los datos. Las medidas de tendencia central nos indican hacia donde se inclinan o se agrupan más los datos. Las más utilizadas son: la media, la mediana y la moda."
+
+[UAEH](https://www.uaeh.edu.mx/division_academica/educacion-media/repositorio/2010/6-semestre/estadistica/medidas-tendencia-central.pdf "UAEH (2022)")![]()[(2022)](https://www.uaeh.edu.mx/division_academica/educacion-media/repositorio/2010/6-semestre/estadistica/medidas-tendencia-central.pdf "UAEH (2022)")
+
+Para este ejemplo, pri mero generaremos una serie de **100** números aleatorios entre **1** y **20** mediante la función `sample`. El argumento `TRUE` nos permitirá generar una muestra con remplazo:
+
+```{r}
+numeros <- sample(1:20, 100, TRUE)
+numeros
+```
+
+### 2. Mediana 📍 {style="text-align: justify;"}
+
+> "La **mediana** es el valor que ocupa el lugar central de todos los datos cuando éstos están ordenados de menor a mayor.
+>
+> La **mediana** se representa por ![M_e](https://www.superprof.es/apuntes/wp-content/ql-cache/quicklatex.com-62d4d16091bac189e5f334a6d2f4cb4e_l3.png "Rendered by QuickLaTeX.com")
+>
+> La **mediana** se puede hallar solo para **variables cuantitativas**."
+
+[Superprof (2022)](https://www.superprof.es/apuntes/escolar/matematicas/estadistica/descriptiva/mediana.html "Superprof (2022)")
+
+Para obtener la **mediana**, podemos ordenar los `numeros` de menor a mayor, **el número que esté en medio de la muestra será la mediana**. Si utilizamos R, se puede hacer el cálculo de la **mediana** con la función `median`:
+
+```{r}
+mediana <- median(numeros)
+mediana
+```
+
+### 3. Media 🧮 {style="text-align: justify;"}
+
+> Definición: "aquí va la definición"
+
+[Fuente (año)](https://www.google.com/ "Fuente (año)")
+
+<center>
+
+$$ Media ={\frac {1}{n}}\sum _{i=1}^{n}a_{i}={\frac {a_{1}+a_{2}+\cdots +a_{n}}{n}} $$
+
+</center>
+
+Si usamos R, podemos obtener la media de una muestra si utlilizamos la función **mean**:
+
+```{r}
+media <- mean(numeros)
+media
+```
+
+### 4. Moda 📊 {style="text-align: justify;"}
+
+> "La **moda** es una **medida de tendencia central** que indica el **valor que más se repite** en un grupo de números. En un mismo estudio **puede haber más de una moda**, esto ocurre cuando dos (bimodal) o más números (multimodal)se repiten la misma cantidad de veces siendo este es el máximo número de veces del conjunto. También puede darse el caso a la inversa y que en una muestra no haya moda por la ausencia de repetición de los datos, a esto se le llama muestra amodal."
+
+[plusmaths(2022)](https://es.plusmaths.com/la-moda-estadistica.html "plusmaths(2022)")
+
+Podemos saber cuál es la **frecuencia** (número de veces que aparece un elemento en una muestra) de cada número si dibujamos un **histograma** con la función `hist`, **aquel elemento con mayor frecuencia será la moda**:
+
+```{r}
+# El argumento breaks nos permite dividir en histograma en las partes que queramos
+hist(numeros, breaks = 20)
+```
+
+Para obtener un resultado con más precisión, podemos obtener la **moda** si generamos una **tabla de frecuencias** con la función `table` y la función `data.frame`, **aquel elemento con mayor frecuencia será la moda**:
+
+```{r}
+tabla.frecuencias <- data.frame(table(numeros))
+tabla.frecuencias
+```
+
+### 5. Ejercicio 👩‍💻👨‍💻✍ {style="text-align: justify;"}
+
+Aplica lo que aprendiste, obten la **mediana**, **media** y **moda** de la siguiente muestra de números:
+
+```{r}
+# Con la función seq, creamos una secuencia de 1 a 10 en intervalos de 0.1 en 0.1
+secuencia <- seq(1, 10, 0.1)
+muestra <- sample(secuencia, 100, TRUE)
+muestra
+```
+
+##### Mediana {style="text-align: center; color: blue;"}
+
+```{r}
+mediana.muestra<-median(muestra)
+mediana.muestra
+
+```
+
+##### Media {style="text-align: center; color: darkgreen;"}
+
+```{r}
+media.muestra<-mean(muestra)
+media.muestra
+
+# Aquí el cálculo de la media
+```
+
+##### Moda {style="text-align: center; color: red;"}
+
+```{r}
+tabla.muestra <- data.frame(table(muestra))
+tabla.muestramoda.muestra <-4.8
+moda.muestra
+```
+
+<center>
+
+💻[Código disponible en RStudio Cloud](https://rstudio.cloud/project/3671022 "👩‍💻 Disponible en RStudio Cloud 👨‍💻")💻
+
+</center>
